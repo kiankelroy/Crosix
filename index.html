@@ -297,11 +297,11 @@
     <section id="contact">
       <div class="container">
         <h2>Let's Build Your Website</h2>
-         <form class="contact-form" id="quoteForm" action="https://formsubmit.co/Crosix@gmail.com" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://kiankelroy.github.io/Crosix/">id="quoteForm" action="https://formsubmit.co/Crosix@gmail.com" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="YOUR_LIVE_SITE_URL">
+        <!-- ✅ FIXED FORM: Now sends to Crosix@gmail.com -->
+        <form class="contact-form" action="https://formsubmit.co/Crosix@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://kiankelroy.github.io/Crosix/">
+          
           <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" placeholder="Jane Doe" required>
@@ -328,7 +328,6 @@
             <textarea id="message" name="message" rows="4" placeholder="Goals, timeline, must-have features, reference sites..."></textarea>
           </div>
           <button type="submit" class="btn">Send Request →</button>
-          <div class="form-msg success">Thanks! Crosix will review your request and reply within 24 hours.</div>
         </form>
       </div>
     </section>
@@ -354,7 +353,6 @@
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
-
 
     // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
