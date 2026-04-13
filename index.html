@@ -355,13 +355,6 @@
       link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
 
-    // Form handling (frontend demo)
-    const form = document.getElementById('quoteForm');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      form.querySelector('.form-msg').classList.add('success');
-      form.reset();
-    });
 
     // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
