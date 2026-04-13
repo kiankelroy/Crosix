@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional, affordable website design for small businesses by Crosix. Fast delivery, mobile-friendly, and built to grow with you.">
+  <title>Crosix | Small Business Website Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #0f172a;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #334155;
+      --text-light: #64748b;
+      --success: #10b981;
+      --border: #e2e8f0;
+      --radius: 8px;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+    h1, h2, h3 { color: var(--secondary); line-height: 1.2; margin-bottom: 1rem; }
+    h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(2rem, 4vw, 2.5rem); text-align: center; margin-bottom: 2.5rem; }
+    p { margin-bottom: 1.25rem; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--primary); color: white;
+      padding: 0.85rem 1.75rem; border-radius: var(--radius);
+      font-weight: 600; transition: all 0.2s; border: none; cursor: pointer;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    /* Header */
+    header {
+      background: var(--surface); position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 0;
+    }
+    .logo { font-weight: 700; font-size: 1.25rem; color: var(--secondary); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* Hero */
+    #hero {
+      text-align: center; padding: 6rem 0 5rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+    }
+    .hero-sub { color: var(--text-light); font-size: 1.15rem; max-width: 600px; margin: 0 auto 2rem; }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Services */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
+    }
+    .service-card {
+      background: var(--surface); padding: 2rem; border-radius: var(--radius);
+      box-shadow: var(--shadow); transition: transform 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card h3 { margin-bottom: 0.75rem; }
+    .icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+    /* Process */
+    #process { background: var(--surface); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem;
+      text-align: center;
+    }
+    .step { position: relative; padding: 1.5rem; }
+    .step-num {
+      width: 40px; height: 40px; background: var(--primary); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; margin: 0 auto 1rem;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;
+      align-items: start;
+    }
+    .price-card {
+      background: var(--surface); padding: 2rem; border-radius: var(--radius);
+      box-shadow: var(--shadow); text-align: center; position: relative; overflow: hidden;
+    }
+    .price-card.featured { border: 2px solid var(--primary); transform: scale(1.03); }
+    .price-card.featured::before {
+      content: "Most Popular"; position: absolute; top: 10px; right: -30px;
+      background: var(--primary); color: white; padding: 4px 30px;
+      font-size: 0.75rem; font-weight: 600; transform: rotate(45deg);
+    }
+    .price { font-size: 2.5rem; font-weight: 700; margin: 1rem 0; color: var(--secondary); }
+    .price span { font-size: 1rem; color: var(--text-light); font-weight: 400; }
+    .features { list-style: none; margin: 1.5rem 0; text-align: left; }
+    .features li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+    .features li:last-child { border-bottom: none; }
+
+    /* Contact */
+    #contact { background: var(--secondary); color: white; }
+    #contact h2 { color: white; }
+    .contact-form {
+      max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.05);
+      padding: 2rem; border-radius: var(--radius);
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+    input, textarea, select {
+      width: 100%; padding: 0.85rem; border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1);
+      color: white; font-family: inherit;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.6); }
+    input:focus, textarea:focus { outline: none; border-color: var(--primary); }
+    .form-msg { margin-top: 1rem; padding: 0.75rem; border-radius: var(--radius); display: none; }
+    .form-msg.success { background: var(--success); color: white; display: block; }
+
+    /* Footer */
+    footer {
+      background: #0b1120; color: #94a3b8; padding: 2.5rem 0; text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .footer-links a:hover { color: white; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: var(--surface);
+        padding: 1.5rem; box-shadow: var(--shadow);
+      }
+      .nav-links.active { display: flex; }
+      .mobile-toggle { display: block; }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+      .price-card.featured { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Crosix</a>
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="container">
+        <h1>Websites That Work as Hard as You Do</h1>
+        <p class="hero-sub">Custom, mobile-friendly, and SEO-ready websites designed specifically for small businesses. No fluff. Just results.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Get Your Free Quote</a>
+          <a href="#pricing" class="btn btn-outline">View Packages</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>What You Get</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="icon">📱</span>
+            <h3>Mobile-First Design</h3>
+            <p>Looks flawless on phones, tablets, and desktops. Over 60% of your customers are browsing on mobile.</p>
+          </div>
+          <div class="service-card">
+            <span class="icon">⚡</span>
+            <h3>Lightning Fast</h3>
+            <p>Optimized code, compressed images, and clean architecture so your site loads in under 2 seconds.</p>
+          </div>
+          <div class="service-card">
+            <span class="icon">🔍</span>
+            <h3>SEO-Ready Structure</h3>
+            <p>Built with clean headings, meta tags, and fast indexing so Google actually finds you.</p>
+          </div>
+          <div class="service-card">
+            <span class="icon">🛠️</span>
+            <h3>Easy to Update</h3>
+            <p>Delivered with a simple CMS or clear instructions. Update text, images, and hours without coding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2>How It Works</h2>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Discovery Call</h3>
+            <p>We chat about your business, goals, audience, and must-have features.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Design & Mockup</h3>
+            <p>I create a custom layout tailored to your brand for your approval.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Build & Refine</h3>
+            <p>Development, mobile testing, speed optimization, and your revisions.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <h3>Launch & Support</h3>
+            <p>Go live with domain setup, analytics, and 30 days of free tweaks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <h2>Simple, Transparent Pricing</h2>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <h3>Starter</h3>
+            <div class="price">$199<span>/one-time</span></div>
+            <p>Perfect for new businesses needing a clean, professional online presence.</p>
+            <ul class="features">
+              <li>✅ 3 Custom Pages</li>
+              <li>✅ Mobile Responsive</li>
+              <li>✅ Contact Form & Map</li>
+              <li>✅ Basic SEO Setup</li>
+              <li>❌ E-commerce / Booking</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Choose Starter</a>
+          </div>
+          <div class="price-card featured">
+            <h3>Professional</h3>
+            <div class="price">$399<span>/one-time</span></div>
+            <p>Everything you need to convert visitors into paying customers.</p>
+            <ul class="features">
+              <li>✅ Up to 6 Pages</li>
+              <li>✅ CMS Training & Access</li>
+              <li>✅ Google Analytics Setup</li>
+              <li>✅ Speed & SEO Optimization</li>
+              <li>✅ 30 Days Post-Launch Support</li>
+            </ul>
+            <a href="#contact" class="btn">Choose Professional</a>
+          </div>
+          <div class="price-card">
+            <h3>Advanced</h3>
+            <div class="price">$699<span>/one-time</span></div>
+            <p>For businesses ready to scale with bookings, e-commerce, or custom features.</p>
+            <ul class="features">
+              <li>✅ Unlimited Pages</li>
+              <li>✅ E-commerce / Booking System</li>
+              <li>✅ Advanced SEO & Schema</li>
+              <li>✅ Custom Animations/Forms</li>
+              <li>✅ 60 Days Support + Priority</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Choose Advanced</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Let's Build Your Website</h2>
+        <form class="contact-form" id="quoteForm" action="https://formsubmit.co/Crosix@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="YOUR_LIVE_SITE_URL">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required>
+          </div>
+          <div class="form-group">
+            <label for="business">Business Type</label>
+            <input type="text" id="business" name="business" placeholder="e.g., Local Bakery, Consulting, Retail" required>
+          </div>
+          <div class="form-group">
+            <label for="package">Interested Package</label>
+            <select id="package" name="package">
+              <option value="starter">Starter ($199)</option>
+              <option value="professional" selected>Professional ($399)</option>
+              <option value="advanced">Advanced ($699)</option>
+              <option value="custom">Custom Quote</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me about your project</label>
+            <textarea id="message" name="message" rows="4" placeholder="Goals, timeline, must-have features, reference sites..."></textarea>
+          </div>
+          <button type="submit" class="btn">Send Request →</button>
+          <div class="form-msg success">Thanks! Crosix will review your request and reply within 24 hours.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:Crosix@gmail.com">Crosix@gmail.com</a>
+      </div>
+      <p>&copy; <span id="year"></span> Crosix. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // Form handling (frontend demo)
+    const form = document.getElementById('quoteForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.querySelector('.form-msg').classList.add('success');
+      form.reset();
+    });
+
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
